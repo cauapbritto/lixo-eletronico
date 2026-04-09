@@ -450,3 +450,84 @@ function printPointInfo(pointId) {
 }
 
 console.log('🌍 EcoPontos - Sistema de Coleta de Lixo Eletrônico v1.0.1 (Revisado com Sucesso!)');
+
+// ==================== GERENCIAMENTO DE TEMA CLARO/ESCURO ====================
+
+/**
+ * Inicializa o sistema de tema claro/escuro
+ * Verifica as prefer�ncias salvas e prefer�ncia do sistema
+ */
+function initializeTheme() {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.querySelector('.theme-icon');
+    
+    if (!themeToggle) return;
+    
+    // 1. Verificar se h� prefer�ncia salva no localStorage
+    const savedTheme = localStorage.getItem('theme');
+    
+    // 2. Se n�o houver prefer�ncia salva, usar prefer�ncia do sistema
+    let currentTheme = savedTheme;
+    
+    if (!currentTheme) {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        currentTheme = prefersDark ? 'dark' : 'light';
+    }
+    
+    // 3. Aplicar tema
+    applyTheme(currentTheme);
+    
+    // 4. Event listener para o bot�o toggle
+    themeToggle.addEventListener('click', toggleTheme);
+    
+    // 5. Observar mudan�as na prefer�ncia do sistema
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            applyTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+}
+
+/**
+ * Aplica o tema selecionado
+ * @param {string} theme - 'light' ou 'dark'
+ */
+function applyTheme(theme) {
+    const html = document.documentElement;
+    const themeIcon = document.querySelector('.theme-icon');
+    
+    if (theme === 'dark') {
+        html.setAttribute('data-theme', 'dark');
+        if (themeIcon) themeIcon.textContent = '\u{1F319}'; // 🌙
+    } else {
+        html.removeAttribute('data-theme');
+        if (themeIcon) themeIcon.textContent = '\u{2600}\uFE0F'; // ☀️
+    }
+    
+    // Salvar prefer�ncia no localStorage
+    localStorage.setItem('theme', theme);
+}
+
+/**
+ * Alterna entre tema claro e escuro
+ */
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    console.log('Tema anterior:', currentTheme || 'light', '-> Novo tema:', newTheme);
+    applyTheme(newTheme);
+}
+
+// Inicializar tema quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Inicializando sistema de temas...');
+    initializeTheme();
+});
+
+// Se o script rodar depois que o DOM já foi carregado
+if (document.readyState !== 'loading') {
+    console.log('DOM já carregado, inicializando temas imediatamente...');
+    initializeTheme();
+}

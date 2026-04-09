@@ -27,6 +27,12 @@
                         <li><a href="#sobre" class="nav-link">Sobre</a></li>
                     </ul>
                 </nav>
+                <button class="theme-toggle" id="themeToggle" 
+                    aria-label="Alternar modo escuro/claro" 
+                    title="Alternar tema"
+                    onclick="window.toggleTheme()">
+                    <span class="theme-icon">☀️</span>
+                </button>
                 <button class="menu-toggle" id="menuToggle" 
                     aria-label="Menu de navegação" 
                     aria-expanded="false"
@@ -210,6 +216,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="js/theme.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
