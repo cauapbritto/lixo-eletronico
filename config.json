@@ -1,0 +1,233 @@
+{
+  "titulo": "EcoPontos - Coleta de Lixo Eletrônico",
+  "descricao": "Landing page para coleta responsável de lixo eletrônico em Cuiabá, MT",
+  "versao": "1.0.0",
+  "autor": "Seu Nome/Empresa",
+  "ano": 2026,
+  "contato": {
+    "email": "contato@ecopontos.com",
+    "telefone": "(65) 3265-4000",
+    "cidade": "Cuiabá",
+    "estado": "MT",
+    "pais": "Brasil"
+  },
+  "cores": {
+    "primaria": "#2ecc71",
+    "secundaria": "#27ae60",
+    "acentuada": "#3498db",
+    "fundo_claro": "#f5f7fa",
+    "fundo_escuro": "#2c3e50",
+    "branco": "#ffffff",
+    "texto": "#333333"
+  },
+  "menu": {
+    "itens": [
+      {
+        "label": "Início",
+        "url": "#inicio"
+      },
+      {
+        "label": "Pontos de Coleta",
+        "url": "#pontos"
+      },
+      {
+        "label": "Sobre",
+        "url": "#sobre"
+      }
+    ]
+  },
+  "hero": {
+    "titulo": "Descarte seu Lixo Eletrônico Corretamente",
+    "subtitulo": "Encontre os pontos de coleta mais próximos de você em Cuiabá e ajude a preservar o meio ambiente",
+    "botao": "Encontrar Pontos de Coleta"
+  },
+  "mapa": {
+    "tipo": "google_maps",
+    "url_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3830.0851899999997!2d-55.586666!3d-15.593889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f2f4b8a0a0a0ab%3A0x0!2sCuiab%C3%A1%2C%20MT!5e0!3m2!1spt-BR!2sbr!4v1234567890",
+    "largura": "100%",
+    "altura": 500,
+    "latitude": -15.593889,
+    "longitude": -55.586666,
+    "zoom": 12
+  },
+  "itens_reciclaveis": [
+    {
+      "id": 1,
+      "nome": "Celulares e Smartphones",
+      "descricao": "Aparelhos móveis e baterias de lítio",
+      "icone": "📱"
+    },
+    {
+      "id": 2,
+      "nome": "Computadores e Laptops",
+      "descricao": "Desktop, notebooks e periféricos",
+      "icone": "💻"
+    },
+    {
+      "id": 3,
+      "nome": "Monitores e TVs",
+      "descricao": "Telas de LCD, LED e CRT",
+      "icone": "🖥️"
+    },
+    {
+      "id": 4,
+      "nome": "Cabos e Adaptadores",
+      "descricao": "Cabos USB, HDMI, carregadores",
+      "icone": "🔌"
+    },
+    {
+      "id": 5,
+      "nome": "Baterias e Pilhas",
+      "descricao": "Baterias recarregáveis e pilhas alcalinas",
+      "icone": "🔋"
+    },
+    {
+      "id": 6,
+      "nome": "Fones e Acessórios",
+      "descricao": "Fones de ouvido, alto-falantes, webcams",
+      "icone": "🎧"
+    },
+    {
+      "id": 7,
+      "nome": "Dispositivos Wearables",
+      "descricao": "Smartwatches, pulseiras inteligentes",
+      "icone": "⌚"
+    },
+    {
+      "id": 8,
+      "nome": "Impressoras e Scanners",
+      "descricao": "Equipamentos de escritório eletrônicos",
+      "icone": "🖨️"
+    }
+  ],
+  "razoes_reciclar": [
+    {
+      "id": 1,
+      "titulo": "Proteção do Meio Ambiente",
+      "descricao": "O lixo eletrônico contém metais pesados que contaminam o solo e a água. O descarte correto evita danos irreversíveis aos ecossistemas.",
+      "numero": "1"
+    },
+    {
+      "id": 2,
+      "titulo": "Recuperação de Materiais",
+      "descricao": "O ouro, cobre, alumínio e outros materiais valiosos podem ser recuperados e reutilizados, reduzindo a necessidade de mineração.",
+      "numero": "2"
+    },
+    {
+      "id": 3,
+      "titulo": "Saúde Pública",
+      "descricao": "Trabalhadores em lixões sofrem com exposição a substâncias tóxicas. O descarte correto protege a saúde de comunidades inteiras.",
+      "numero": "3"
+    },
+    {
+      "id": 4,
+      "titulo": "Economia Circular",
+      "descricao": "Recuperar e reciclar materiais cria empregos, reduz custos de produção e promove um ciclo econômico mais sustentável.",
+      "numero": "4"
+    }
+  ],
+  "pontos_coleta": [
+    {
+      "id": 1,
+      "nome": "Loja EcoTech Center",
+      "endereco": "Av. Getúlio Vargas, 1234 - Centro, Cuiabá - MT",
+      "telefone": "(65) 3232-1234",
+      "horario": "Seg-Sex: 8h-18h | Sab: 8h-13h",
+      "tipo": "loja",
+      "icone": "📱",
+      "latitude": -15.5900,
+      "longitude": -55.5870
+    },
+    {
+      "id": 2,
+      "nome": "Cooperativa Verde Vale",
+      "endereco": "Rua das Flores, 567 - Bandeirantes, Cuiabá - MT",
+      "telefone": "(65) 3245-5678",
+      "horario": "Seg-Sab: 7h-17h",
+      "tipo": "cooperativa",
+      "icone": "♻️",
+      "latitude": -15.6100,
+      "longitude": -55.5800
+    },
+    {
+      "id": 3,
+      "nome": "Recicla Brasil Recicladora",
+      "endereco": "Av. Piraputangas, 2890 - Santa Rosa, Cuiabá - MT",
+      "telefone": "(65) 3256-9012",
+      "horario": "Seg-Sex: 8h-17h",
+      "tipo": "empresa",
+      "icone": "🏭",
+      "latitude": -15.5750,
+      "longitude": -55.6100
+    },
+    {
+      "id": 4,
+      "nome": "Prefeitura - Núcleo de Sustentabilidade",
+      "endereco": "Rua Barão de Melgaço, 456 - Centro, Cuiabá - MT",
+      "telefone": "(65) 3321-3456",
+      "horario": "Seg-Sex: 9h-17h",
+      "tipo": "publica",
+      "icone": "🏛️",
+      "latitude": -15.5920,
+      "longitude": -55.5900
+    },
+    {
+      "id": 5,
+      "nome": "Eletrônicos Promoção",
+      "endereco": "Av. Brasil, 3000 - Dom Aquino, Cuiabá - MT",
+      "telefone": "(65) 3333-8901",
+      "horario": "Seg-Sab: 9h-19h | Dom: 9h-13h",
+      "tipo": "loja",
+      "icone": "🖥️",
+      "latitude": -15.6050,
+      "longitude": -55.5750
+    },
+    {
+      "id": 6,
+      "nome": "UNEMAT - Campus Central",
+      "endereco": "Avenida Getúlio Vargas, 2780 - Cavalhada, Cuiabá - MT",
+      "telefone": "(65) 3615-8070",
+      "horario": "Seg-Sex: 8h-18h",
+      "tipo": "publica",
+      "icone": "🎓",
+      "latitude": -15.5850,
+      "longitude": -55.5950
+    },
+    {
+      "id": 7,
+      "nome": "Centro de Logística Reversa CuiabáLix",
+      "endereco": "Av. Fernando Corrêa, 5000 - Distrito Industrial, Cuiabá - MT",
+      "telefone": "(65) 3297-5555",
+      "horario": "Seg-Sex: 7h-17h",
+      "tipo": "empresa",
+      "icone": "🚚",
+      "latitude": -15.6250,
+      "longitude": -55.6350
+    },
+    {
+      "id": 8,
+      "nome": "Amigos da Natureza Eco-Shop",
+      "endereco": "Quadra 02, Lote 05 - Planalto, Cuiabá - MT",
+      "telefone": "(65) 3244-7777",
+      "horario": "Seg-Dom: 10h-18h",
+      "tipo": "cooperativa",
+      "icone": "🌱",
+      "latitude": -15.5700,
+      "longitude": -55.5650
+    }
+  ],
+  "footer": {
+    "copyright": "© 2026 EcoPontos. Desenvolvido com ♻️ para o meio ambiente.",
+    "redes_sociais": {
+      "facebook": "#",
+      "instagram": "#",
+      "twitter": "#"
+    }
+  },
+  "seo": {
+    "meta_description": "EcoPontos - Descarte seu lixo eletrônico corretamente em Cuiabá. Encontre pontos de coleta, aprenda sobre reciclagem e contribua para o meio ambiente.",
+    "keywords": "lixo eletrônico, reciclagem, coleta, Cuiabá, MT, sustentabilidade, ambiente",
+    "language": "pt-BR",
+    "viewport": "width=device-width, initial-scale=1.0"
+  }
+}
