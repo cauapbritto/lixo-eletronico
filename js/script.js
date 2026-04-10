@@ -236,10 +236,8 @@ function renderPoints(points) {
             <span class="point-badge">${typeLabel[point.type] || point.type}</span>
         `;
         
-        // Event listener para atualizar o mapa ao clicar
+        // Event listener para atualizar a seleção de card
         card.addEventListener('click', () => {
-            updateMapLocation(point);
-            
             // Remover classe "selected" de todos os cards
             document.querySelectorAll('.point-card').forEach(c => {
                 c.classList.remove('selected');
@@ -247,28 +245,10 @@ function renderPoints(points) {
             
             // Adicionar classe "selected" ao card clicado
             card.classList.add('selected');
-            
-            // Scroll para o mapa
-            document.querySelector('.map-section').scrollIntoView({ behavior: 'smooth' });
         });
         
         pointsGrid.appendChild(card);
     });
-}
-
-// ==================== ATUALIZAR LOCALIZAÇÃO DO MAPA ====================
-function updateMapLocation(point) {
-    const mapIframe = document.getElementById('mapIframe');
-    // Gerar nova URL do Google Maps com as coordenadas do ponto
-    const newMapUrl = `https://maps.google.com/maps?q=${point.lat},${point.lng}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
-    
-    mapIframe.src = newMapUrl;
-    
-    // Atualizar informações do mapa
-    const mapInfo = document.querySelector('.map-info');
-    if (mapInfo) {
-        mapInfo.textContent = `📍 ${point.name} - ${point.address}`;
-    }
 }
 
 // ==================== FILTRAR E BUSCAR ====================
