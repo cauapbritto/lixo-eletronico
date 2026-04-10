@@ -10,6 +10,13 @@
     --border: #ecf0f1;
     --border-light: #f0f0f0;
     
+    /* Cores - Básicas */
+    --color-white: #ffffff;
+    --color-light-gray: #f5f7fa;
+    --color-dark-gray: #333333;
+    --color-text: #333333;
+    --color-border: #ecf0f1;
+    
     /* Cores de Destaque */
     --color-primary: #2ecc71;      /* Verde sustentável */
     --color-secondary: #27ae60;    /* Verde mais escuro */
@@ -57,6 +64,13 @@
     --text-tertiary: #808080;
     --border: #2e2e2e;
     --border-light: #333333;
+    
+    /* Cores - Básicas (modo escuro) */
+    --color-white: #222222;
+    --color-light-gray: #1a1a1a;
+    --color-dark-gray: #f0f0f0;
+    --color-text: #f0f0f0;
+    --color-border: #2e2e2e;
     
     /* Cores de Destaque - ajustadas para o modo escuro */
     --color-primary: #3edc81;      /* Verde mais claro no escuro */
