@@ -227,6 +227,9 @@ function renderPoints(points) {
             publica: 'Instituição Pública'
         };
         
+        // Construir URL do Google Maps com coordenadas
+        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${point.lat},${point.lng}`;
+        
         card.innerHTML = `
             <div class="point-emoji">${point.image}</div>
             <h3>${point.name}</h3>
@@ -234,42 +237,22 @@ function renderPoints(points) {
             <p><strong>📞 Telefone:</strong><br><a href="tel:${point.phone.replace(/\D/g, '')}" class="phone-link">${point.phone}</a></p>
             <p><strong>⏰ Funcionamento:</strong><br>${point.hours}</p>
             <span class="point-badge">${typeLabel[point.type] || point.type}</span>
+            <a href="${mapsUrl}" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-location"
+               aria-label="Abrir localização de ${point.name} no Google Maps">
+                📍 Ir à localização
+            </a>
         `;
-        
-        // Event listener para atualizar o mapa ao clicar
-        card.addEventListener('click', () => {
-            updateMapLocation(point);
-            
-            // Remover classe "selected" de todos os cards
-            document.querySelectorAll('.point-card').forEach(c => {
-                c.classList.remove('selected');
-            });
-            
-            // Adicionar classe "selected" ao card clicado
-            card.classList.add('selected');
-            
-            // Scroll para o mapa
-            document.querySelector('.map-section').scrollIntoView({ behavior: 'smooth' });
-        });
         
         pointsGrid.appendChild(card);
     });
 }
 
-// ==================== ATUALIZAR LOCALIZAÇÃO DO MAPA ====================
-function updateMapLocation(point) {
-    const mapIframe = document.getElementById('mapIframe');
-    // Gerar nova URL do Google Maps com as coordenadas do ponto
-    const newMapUrl = `https://maps.google.com/maps?q=${point.lat},${point.lng}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
-    
-    mapIframe.src = newMapUrl;
-    
-    // Atualizar informações do mapa
-    const mapInfo = document.querySelector('.map-info');
-    if (mapInfo) {
-        mapInfo.textContent = `📍 ${point.name} - ${point.address}`;
-    }
-}
+// ==================== FUNÇÃO DE MAPA REMOVIDA ====================
+// A função updateMapLocation(point) foi removida.
+// Os pontos de coleta agora abrem o Google Maps em nova aba através do botão "Ir à localização"
 
 // ==================== FILTRAR E BUSCAR ====================
 function filterAndSearch() {
@@ -287,68 +270,82 @@ function filterAndSearch() {
     renderPoints(filtered);
 }
 
-// Event listeners para busca e filtro
-searchInput.addEventListener('input', filterAndSearch);
-filterSelect.addEventListener('change', filterAndSearch);
+// ==================== VERIFICAR SE ELEMENTOS DOM EXISTEM ====================
+function checkDOMElements() {
+    const missing = [];
+    if (!pointsGrid) missing.push('pointsGrid');
+    if (!searchInput) missing.push('searchInput');
+    if (!filterSelect) missing.push('filterSelect');
+    if (!menuToggle) missing.push('menuToggle');
+    if (!navMenu) missing.push('navMenu');
+    if (!ctaButton) missing.push('ctaButton');
+    
+    if (missing.length > 0) {
+        console.error('❌ Elementos DO DOM não encontrados:', missing);
+        return false;
+    }
+    return true;
+}
+
+// Event listeners para busca e filtro (apenas se elementos existem)
+if (searchInput) searchInput.addEventListener('input', filterAndSearch);
+if (filterSelect) filterSelect.addEventListener('change', filterAndSearch);
 
 // ==================== MENU RESPONSIVO ====================
-menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    
-    // Atualizar aria-expanded
-    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-    menuToggle.setAttribute('aria-expanded', !isExpanded);
-});
+if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        
+        // Atualizar aria-expanded
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+    });
+}
 
 // Fechar menu ao clicar em um link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
+if (navLinks && navLinks.length > 0) {
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (menuToggle) menuToggle.classList.remove('active');
+            if (navMenu) navMenu.classList.remove('active');
+            if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+        });
     });
-});
+}
 
 // ==================== BOTÃO CTA ====================
-ctaButton.addEventListener('click', () => {
-    const pontosSection = document.getElementById('pontos');
-    pontosSection.scrollIntoView({ behavior: 'smooth' });
-});
-
-// ==================== ANIMAÇÃO DE SCROLL REVEAL ====================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+if (ctaButton) {
+    ctaButton.addEventListener('click', () => {
+        const pontosSection = document.getElementById('pontos');
+        if (pontosSection) {
+            pontosSection.scrollIntoView({ behavior: 'smooth' });
         }
     });
-}, observerOptions);
-
-// Observar todas as seções
-const sections = document.querySelectorAll('section');
-sections.forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'all 0.6s ease';
-    observer.observe(section);
-});
+}
 
 // ==================== INICIALIZAÇÃO ====================
 document.addEventListener('DOMContentLoaded', () => {
-    // Renderizar todos os pontos na primeira carga
-    renderPoints(collectionPoints);
+    console.log('🚀 Iniciando EcoPontos - DOMContentLoaded disparado');
     
-    // Adicionar classe ativa ao link de navegação baseado na URL
+    // Verificar se elementos DOM críticos existem
+    if (!checkDOMElements()) {
+        console.error('❌ ERRO: Elementos DOM críticos não encontrados. Abortando inicialização.');
+        return;
+    }
+    
+    // 1. Renderizar todos os pontos na primeira carga
+    try {
+        renderPoints(collectionPoints);
+        console.log('✓ Pontos de coleta renderizados com sucesso');
+    } catch (e) {
+        console.error('❌ Erro ao renderizar pontos:', e);
+    }
+    
+    // 2. Adicionar classe ativa ao link de navegação baseado na URL
     updateActiveNavLink();
     
-    // Restaurar filtros salvos se localStorage disponível
+    // 3. Restaurar filtros salvos se localStorage disponível
     if (checkLocalStorageSupport()) {
         const lastSearch = localStorage.getItem('lastSearch');
         const lastFilter = localStorage.getItem('lastFilter');
@@ -365,6 +362,36 @@ document.addEventListener('DOMContentLoaded', () => {
             filterAndSearch();
         }
     }
+    
+    // 4. ==================== MOSTRAR SEÇÕES - SUPORTE PARA SCROLL REVEAL ====================
+    // As seções são VISÍVEIS por padrão. Não as tornamos invisíveis (opacity: 0).
+    // Isso garante que sempre apareçam, até em mobile com problemas de IntersectionObserver.
+    // IntersectionObserver será usado apenas para animação adicional (fade-in suave) se necessário.
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '50px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // APENAS animar, não tornar visível (já está visível por padrão)
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observar seções para animações suaves, mas NÃO as torna invisíveis
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        // IMPORTANTE: Seções já começam VISÍVEIS (opacity: 1 por padrão em CSS)
+        // Apenas adicionar transição para animação suave
+        section.style.transition = 'all 0.6s ease';
+        observer.observe(section);
+    });
+    
+    console.log('✓ Seções visíveis e animações de scroll reveal configuradas para', sections.length, 'seções');
 });
 
 // ==================== ATUALIZAR LINK ATIVO ====================
@@ -520,14 +547,14 @@ function toggleTheme() {
     applyTheme(newTheme);
 }
 
-// Inicializar tema quando o DOM estiver pronto
+// ==================== INICIALIZAR TEMA NO DOMContentLoaded ====================
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Inicializando sistema de temas...');
+    console.log('✓ Inicializando sistema de temas...');
     initializeTheme();
-});
+}, { once: true });
 
-// Se o script rodar depois que o DOM já foi carregado
+// Se o script rodar depois que o DOM já foi carregado, inicializar tema imediatamente
 if (document.readyState !== 'loading') {
-    console.log('DOM já carregado, inicializando temas imediatamente...');
+    console.log('✓ DOM já carregado, inicializando temas imediatamente...');
     initializeTheme();
 }

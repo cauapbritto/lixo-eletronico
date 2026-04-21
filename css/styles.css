@@ -514,23 +514,46 @@ body {
     font-size: var(--font-size-lg);
 }
 
-/* ==================== MAPA ==================== */
-.map-section {
-    padding: var(--spacing-2xl) 0;
-    background-color: var(--color-white);
+/* ==================== BOTÃO DE LOCALIZAÇÃO ==================== */
+.btn-location {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    background-color: var(--color-primary);
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    min-height: 44px;
 }
 
-.map-container {
-    border-radius: 12px;
-    overflow: hidden;
+.btn-location:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
-    margin-bottom: var(--spacing-lg);
 }
 
-.map-info {
-    text-align: center;
-    color: #666;
-    font-size: var(--font-size-sm);
+.btn-location:active {
+    transform: translateY(-2px);
+}
+
+/* Dark mode support */
+[data-theme="dark"] .btn-location {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .btn-location:hover {
+    background-color: var(--color-secondary);
 }
 
 /* ==================== O QUE PODE SER DESCARTADO ==================== */
@@ -802,8 +825,10 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .map-container iframe {
-        height: 300px;
+    .btn-location {
+        padding: var(--spacing-md);
+        font-size: var(--font-size-sm);
+        min-height: 44px;
     }
 
     .items-grid {
