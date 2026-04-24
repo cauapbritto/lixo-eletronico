@@ -10,13 +10,6 @@
     --border: #ecf0f1;
     --border-light: #f0f0f0;
     
-    /* Cores - Básicas */
-    --color-white: #ffffff;
-    --color-light-gray: #f5f7fa;
-    --color-dark-gray: #333333;
-    --color-text: #333333;
-    --color-border: #ecf0f1;
-    
     /* Cores de Destaque */
     --color-primary: #2ecc71;      /* Verde sustentável */
     --color-secondary: #27ae60;    /* Verde mais escuro */
@@ -64,13 +57,6 @@
     --text-tertiary: #808080;
     --border: #2e2e2e;
     --border-light: #333333;
-    
-    /* Cores - Básicas (modo escuro) */
-    --color-white: #222222;
-    --color-light-gray: #1a1a1a;
-    --color-dark-gray: #f0f0f0;
-    --color-text: #f0f0f0;
-    --color-border: #2e2e2e;
     
     /* Cores de Destaque - ajustadas para o modo escuro */
     --color-primary: #3edc81;      /* Verde mais claro no escuro */
@@ -528,6 +514,48 @@ body {
     font-size: var(--font-size-lg);
 }
 
+/* ==================== BOTÃO DE LOCALIZAÇÃO ==================== */
+.btn-location {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    background-color: var(--color-primary);
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    min-height: 44px;
+}
+
+.btn-location:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-location:active {
+    transform: translateY(-2px);
+}
+
+/* Dark mode support */
+[data-theme="dark"] .btn-location {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .btn-location:hover {
+    background-color: var(--color-secondary);
+}
+
 /* ==================== O QUE PODE SER DESCARTADO ==================== */
 .what-to-discard {
     padding: var(--spacing-2xl) 0;
@@ -797,6 +825,12 @@ body {
         grid-template-columns: 1fr;
     }
 
+    .btn-location {
+        padding: var(--spacing-md);
+        font-size: var(--font-size-sm);
+        min-height: 44px;
+    }
+
     .items-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
@@ -841,8 +875,8 @@ body {
     }
 
     .hero {
-        padding: var(--spacing-md) 0;
-        min-height: 280px;
+        padding: var(--spacing-lg) 0;
+        min-height: 300px;
     }
 
     .cta-button {
@@ -859,40 +893,7 @@ body {
     }
 
     section {
-        padding: var(--spacing-md) 0;
-    }
-
-    .section-title {
-        margin-bottom: var(--spacing-lg);
-    }
-
-    .collection-points {
-        padding: var(--spacing-md) 0;
-    }
-
-    .what-to-discard {
-        padding: var(--spacing-md) 0;
-    }
-
-    .points-grid {
-        gap: var(--spacing-md);
-    }
-
-    .items-grid {
-        gap: var(--spacing-md);
-    }
-
-    .reasons-grid {
-        gap: var(--spacing-md);
-    }
-
-    .point-card p {
-        margin-bottom: var(--spacing-xs);
-    }
-
-    .search-filter {
-        gap: var(--spacing-sm);
-        margin-bottom: var(--spacing-lg);
+        padding: var(--spacing-xl) 0;
     }
 
     .item-icon {
