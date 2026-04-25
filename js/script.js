@@ -10,19 +10,10 @@ const collectionPoints = [
         type: "publica",
         image: "♻️",
         lat: -15.5939,
-        lng: -55.5850
+        lng: -55.5850,
+    mapsLink: "https://www.google.com/maps/place/Ecoponto+Regi%C3%A3o+Central+-+ReciclaMT/@-15.6012702,-56.1363851,14z/data=!4m10!1m2!2m1!1sEcoponto+ReciclaMT!3m6!1s0x939db100019601f3:0x1419e75dc1b27d60!8m2!3d-15.6012702!4d-56.1003362!15sChNFY29wb250byBSZWNpY2xhR0VNWhUiE2Vjb3BvbnRvIHJlY2ljbGFnZW2SARByZWN5Y2xpbmdfY2VudGVymgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDI1c2NHRldRbkJrUmxaSFdUSmFSMUpIU20xUmF6UXdWVVZuTkZOc1JSQULgAQD6AQQIABAr!16s%2Fg%2F11ywdb49ny?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D"
     },
-    {
-        id: 2,
-        name: "Ecoponto CPA 3",
-        address: "Antiga Associação de Carroceiros (próximo à Lagoa Encantada), bairro CPA 3",
-        phone: "-",
-        hours: "Durante horário de funcionamento",
-        type: "publica",
-        image: "♻️",
-        lat: -15.5500,
-        lng: -55.6200
-    },
+   
     // SHOPPINGS
     {
         id: 3,
@@ -33,10 +24,11 @@ const collectionPoints = [
         type: "loja",
         image: "🛍️",
         lat: -15.5650,
-        lng: -55.6250
+        lng: -55.6250,
+        mapsLink: "https://www.google.com/maps?sca_esv=0c88d25d31adaebc&rlz=1C1CHZN_pt-BRBR1194BR1194&output=search&q=Pantanal+Shopping&source=lnms&fbs=ADc_l-acAb_3MMOAUx0zmbUpgBqRdynpPJ66TDyFgZmq_XFwppazcD3UADNx6r4GDDz3huEPmSTRGm-9dyANZiv74SedoDsM8tNy_BwDMtzE8mPny03AtaD661oSSUbjyWvzYlluKAc9VvYXErkG6cuYr4IlZn7zHvKYAexppDM3RpZjUX0WNDA-4-CoKEakvUjTanFrWhOxjZ18Fy_aUa7KDGdNSyOd2A&entry=mc&ved=1t:200715&ictx=111"
     },
     {
-        id: 4,
+         id: 4,
         name: "Shopping Popular",
         address: "Av. Beira Rio – Dom Aquino",
         phone: "-",
@@ -44,10 +36,11 @@ const collectionPoints = [
         type: "loja",
         image: "🛍️",
         lat: -15.5750,
-        lng: -55.5950
+        lng: -55.5950,
+        mapsLink: "https://www.google.com/maps/place/Shopping+Popular/@-15.6132736,-56.1366697,13z/data=!4m10!1m2!2m1!1sShopping+Popular!3m6!1s0x939db194dd3ec90b:0xe9e5e7b99a9406f8!8m2!3d-15.6132736!4d-56.1016508!15sChBTaG9wcGluZyBQb3B1bGFyWhIiEHNob3BwaW5nIHBvcHVsYXKSAQ9zaG9wcGluZ19jZW50ZXKaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTjFNR0ZITmxKUkVBReABAPoBBAgpEBk!16s%2Fg%2F11b6hlpl0q?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
     },
     {
-        id: 5,
+          id: 5,
         name: "Shopping Estação",
         address: "Av. Miguel Sutil, 9300 – Santa Rosa",
         phone: "-",
@@ -55,21 +48,12 @@ const collectionPoints = [
         type: "loja",
         image: "🛍️",
         lat: -15.6100,
-        lng: -55.6050
+        lng: -55.6050,
+        mapsLink: "https://www.google.com/maps/place/Shopping+Estação+Cuiabá/@-15.5831851,-56.0966451,14z/data=!4m10!1m2!2m1!1zU2hvcHBpbmcgRXN0YcOnw6Nv!3m6!1s0x939db22967041d05:0xd7e7451568dc588b!8m2!3d-15.5901722!4d-56.1206927!15sChJTaG9wcGluZyBFc3Rhw6fDo29aFCISc2hvcHBpbmcgZXN0YcOnw6NvkgEPc2hvcHBpbmdfY2VudGVymgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDIwMWNtRkdRVEpQUlhSclZrZE9TMVJUTVdwV2JVWmFVa2RvVkdKR1JSQULgAQD6AQQIGxA9!16s%2Fg%2F11gg_gf8kn?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
     },
+    
     {
-        id: 6,
-        name: "Supermercado Modelo",
-        address: "Unidades em Fernando Corrêa, Miguel Sutil, CPA III",
-        phone: "-",
-        hours: "Durante horário do supermercado",
-        type: "loja",
-        image: "🛒",
-        lat: -15.5800,
-        lng: -55.6100
-    },
-    {
-        id: 7,
+          id: 7,
         name: "Atacadão",
         address: "Unidades em Coxipó e Jardim Florianópolis",
         phone: "-",
@@ -77,7 +61,8 @@ const collectionPoints = [
         type: "loja",
         image: "🛒",
         lat: -15.6000,
-        lng: -55.5800
+        lng: -55.5800,
+        mapsLink: "https://www.google.com/maps/search/atacad%C3%A3o/@-15.5901722,-56.1382022,14z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
     },
     {
         id: 8,
@@ -88,7 +73,8 @@ const collectionPoints = [
         type: "loja",
         image: "🛒",
         lat: -15.6050,
-        lng: -55.5750
+        lng: -55.5750,
+        mapsLink: "https://www.google.com/maps/search/Assa%C3%AD+Atacadista/@-15.5901722,-56.1382022,12z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
     },
     // COOPERATIVAS
     {
@@ -100,7 +86,8 @@ const collectionPoints = [
         type: "cooperativa",
         image: "♻️",
         lat: -15.6150,
-        lng: -55.5700
+        lng: -55.5700,
+        mapsLink: "https://www.google.com/maps/place/ACAMARC+RECICLAGEM+-+CUIAB%C3%81/@-15.5362719,-56.1614796,17z/data=!3m1!4b1!4m6!3m5!1s0x939db56989e0bfcb:0xdca0ed4cf0568f5d!8m2!3d-15.5362719!4d-56.1614796!16s%2Fg%2F11rk5t9fvc?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
     },
     {
         id: 10,
@@ -111,41 +98,12 @@ const collectionPoints = [
         type: "cooperativa",
         image: "♻️",
         lat: -15.5600,
-        lng: -55.6300
+        lng: -55.6300,
+        mapsLink: "https://www.google.com/maps/place/COOREPAM+-+COOPERATIVA+ALTERNATIVA+DE+CATADORES,+RECICLAGEM+E+PRESERVA%C3%87%C3%83O+DO+MEIO+AMBIENTE+DO+ESTADO+DE+MATO+GROSSO/@-15.6315846,-55.9434939,17z/data=!3m1!4b1!4m6!3m5!1s0x939da538701c7c55:0x3f677d356f24c781!8m2!3d-15.6315846!4d-55.9434939!16s%2Fg%2F11j5hmfw4f?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
     },
-    {
-        id: 11,
-        name: "AMAS-MT",
-        address: "Rua Fenelon Müller, 704 – Dom Aquino",
-        phone: "(65) 3321-9820",
-        hours: "Seg-Sáb: 8h-17h",
-        type: "cooperativa",
-        image: "♻️",
-        lat: -15.5850,
-        lng: -55.5900
-    },
-    {
-        id: 12,
-        name: "COOPER MAR",
-        address: "Rua Balneário Letícia, km 6 – Várzea do Quilombo",
-        phone: "(65) 9635-1490",
-        hours: "Seg-Sáb: 8h-17h",
-        type: "cooperativa",
-        image: "♻️",
-        lat: -15.6300,
-        lng: -55.6000
-    },
-    {
-        id: 13,
-        name: "COOPERCBA",
-        address: "Avenida Antártica, s/n – Núcleo Habitacional Sucuri",
-        phone: "-",
-        hours: "Seg-Sáb: 8h-17h",
-        type: "cooperativa",
-        image: "♻️",
-        lat: -15.5750,
-        lng: -55.5650
-    },
+   
+  
+   
     // ELETRÔNICOS, PILHAS E ÓLEO
     {
         id: 14,
@@ -156,30 +114,11 @@ const collectionPoints = [
         type: "empresa",
         image: "🖥️",
         lat: -15.6200,
-        lng: -55.5600
+        lng: -55.5600,
+        mapsLink: "https://www.google.com/maps/place/Ecodescarte+Reciclagem+de+Eletr%C3%B4nicos/@-15.6084599,-56.0881408,17z/data=!3m1!4b1!4m6!3m5!1s0x939db1c343d4e737:0x9b410f3cb97940b9!8m2!3d-15.6084599!4d-56.0881408!16s%2Fg%2F11b8v9jgkb?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
     },
-    {
-        id: 15,
-        name: "Associação Paz e Bem",
-        address: "Av. Joaquim Louzada – Novo Colorado",
-        phone: "(65) 99923-9920",
-        hours: "Seg-Sáb: 8h-17h",
-        type: "cooperativa",
-        image: "♻️",
-        lat: -15.6100,
-        lng: -55.5500
-    },
-    {
-        id: 16,
-        name: "Associação Espírita Wantuil de Freitas",
-        address: "Av. Auta de Souza, 53 – Primeiro de Março",
-        phone: "(65) 3649-5851",
-        hours: "Seg-Sáb: 8h-17h",
-        type: "empresa",
-        image: "🛢️",
-        lat: -15.5680,
-        lng: -55.5750
-    },
+   
+   
     {
         id: 17,
         name: "Atacus Reciclagem",
@@ -189,7 +128,8 @@ const collectionPoints = [
         type: "empresa",
         image: "🖥️",
         lat: -15.6350,
-        lng: -55.6100
+        lng: -55.6100,
+        mapsLink: "https://www.google.com/maps/place/ACAMARC+RECICLAGEM+-+CUIAB%C3%81/@-15.5362719,-56.1614796,17z/data=!3m1!4b1!4m6!3m5!1s0x939db56989e0bfcb:0xdca0ed4cf0568f5d!8m2!3d-15.5362719!4d-56.1614796!16s%2Fg%2F11rk5t9fvc?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
     }
 ];
 
@@ -228,7 +168,9 @@ function renderPoints(points) {
         };
         
         // Construir URL do Google Maps com coordenadas
-        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${point.lat},${point.lng}`;
+        const mapsUrl = point.mapsLink 
+    ? point.mapsLink 
+    : `https://www.google.com/maps/search/?api=1&query=${point.lat},${point.lng}`;
         
         card.innerHTML = `
             <div class="point-emoji">${point.image}</div>
