@@ -29,8 +29,7 @@
                 </nav>
                 <button class="theme-toggle" id="themeToggle" 
                     aria-label="Alternar modo escuro/claro" 
-                    title="Alternar tema"
-                    onclick="window.toggleTheme()">
+                    title="Alternar tema">
                     <span class="theme-icon">☀️</span>
                 </button>
                 <button class="menu-toggle" id="menuToggle" 
@@ -58,42 +57,31 @@
         <div class="hero-background"></div>
     </section>
 
-    <!-- ==================== SEÇÃO DE PONTOS DE COLETA ==================== -->
-    <section id="pontos" class="collection-points">
+    <!-- ==================== POR QUE DESCARTAR CORRETAMENTE ==================== -->
+    <section class="why-recycle">
         <div class="container">
-            <h2 class="section-title">Pontos de Coleta em Cuiabá</h2>
-            
-            <!-- Busca e Filtro -->
-            <div class="search-filter">
-                <div>
-                    <label for="searchInput" class="sr-only">Buscar ponto de coleta</label>
-                    <input 
-                        type="text" 
-                        id="searchInput" 
-                        class="search-input" 
-                        placeholder="Buscar por nome do local ou endereço..."
-                        aria-label="Buscar ponto de coleta"
-                    >
+            <h2 class="section-title">Por Que Descartar Corretamente?</h2>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-number">1</div>
+                    <h3>Proteção do Meio Ambiente</h3>
+                    <p>O lixo eletrônico contém metais pesados que contaminam o solo e a água. O descarte correto evita danos irreversíveis aos ecossistemas.</p>
                 </div>
-                <div>
-                    <label for="filterSelect" class="sr-only">Filtrar por tipo</label>
-                    <select id="filterSelect" class="filter-select" aria-label="Filtrar por tipo de estabelecimento">
-                        <option value="">Filtrar por tipo...</option>
-                    <option value="loja">Loja de Eletrônicos</option>
-                    <option value="cooperativa">Cooperativa Ambiental</option>
-                    <option value="empresa">Empresa Recicladora</option>
-                    <option value="publica">Instituição Pública</option>
-                    </select>
+                <div class="reason-card">
+                    <div class="reason-number">2</div>
+                    <h3>Recuperação de Materiais</h3>
+                    <p>O ouro, cobre, alumínio e outros materiais valiosos podem ser recuperados e reutilizados, reduzindo a necessidade de mineração.</p>
                 </div>
-            </div>
-
-            <!-- Grade de Pontos -->
-            <div class="points-grid" id="pointsGrid">
-                <!-- Preenchido via JavaScript -->
-            </div>
-
-            <div id="noResults" class="no-results" style="display: none;">
-                <p>Nenhum ponto encontrado com os filtros selecionados.</p>
+                <div class="reason-card">
+                    <div class="reason-number">3</div>
+                    <h3>Saúde Pública</h3>
+                    <p>Trabalhadores em lixões sofrem com exposição a substâncias tóxicas. O descarte correto protege a saúde de comunidades inteiras.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-number">4</div>
+                    <h3>Economia Circular</h3>
+                    <p>Recuperar e reciclar materiais cria empregos, reduz custos de produção e promove um ciclo econômico mais sustentável.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -147,31 +135,42 @@
         </div>
     </section>
 
-    <!-- ==================== POR QUE DESCARTAR CORRETAMENTE ==================== -->
-    <section class="why-recycle">
+    <!-- ==================== SEÇÃO DE PONTOS DE COLETA ==================== -->
+    <section id="pontos" class="collection-points">
         <div class="container">
-            <h2 class="section-title">Por Que Descartar Corretamente?</h2>
-            <div class="reasons-grid">
-                <div class="reason-card">
-                    <div class="reason-number">1</div>
-                    <h3>Proteção do Meio Ambiente</h3>
-                    <p>O lixo eletrônico contém metais pesados que contaminam o solo e a água. O descarte correto evita danos irreversíveis aos ecossistemas.</p>
+            <h2 class="section-title">Pontos de Coleta em Cuiabá</h2>
+            
+            <!-- Busca e Filtro -->
+            <div class="search-filter">
+                <div>
+                    <label for="searchInput" class="sr-only">Buscar ponto de coleta</label>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Buscar por nome do local ou endereço..."
+                        aria-label="Buscar ponto de coleta"
+                    >
                 </div>
-                <div class="reason-card">
-                    <div class="reason-number">2</div>
-                    <h3>Recuperação de Materiais</h3>
-                    <p>O ouro, cobre, alumínio e outros materiais valiosos podem ser recuperados e reutilizados, reduzindo a necessidade de mineração.</p>
+                <div>
+                    <label for="filterSelect" class="sr-only">Filtrar por tipo</label>
+                    <select id="filterSelect" class="filter-select" aria-label="Filtrar por tipo de estabelecimento">
+                        <option value="">Filtrar por tipo...</option>
+                    <option value="loja">Loja de Eletrônicos</option>
+                    <option value="cooperativa">Cooperativa Ambiental</option>
+                    <option value="empresa">Empresa Recicladora</option>
+                    <option value="publica">Instituição Pública</option>
+                    </select>
                 </div>
-                <div class="reason-card">
-                    <div class="reason-number">3</div>
-                    <h3>Saúde Pública</h3>
-                    <p>Trabalhadores em lixões sofrem com exposição a substâncias tóxicas. O descarte correto protege a saúde de comunidades inteiras.</p>
-                </div>
-                <div class="reason-card">
-                    <div class="reason-number">4</div>
-                    <h3>Economia Circular</h3>
-                    <p>Recuperar e reciclar materiais cria empregos, reduz custos de produção e promove um ciclo econômico mais sustentável.</p>
-                </div>
+            </div>
+
+            <!-- Grade de Pontos -->
+            <div class="points-grid" id="pointsGrid">
+                <!-- Preenchido via JavaScript -->
+            </div>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>Nenhum ponto encontrado com os filtros selecionados.</p>
             </div>
         </div>
     </section>

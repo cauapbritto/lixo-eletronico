@@ -9,6 +9,11 @@
     --text-tertiary: #999999;
     --border: #ecf0f1;
     --border-light: #f0f0f0;
+    --color-white: #ffffff;
+    --color-dark-gray: #2c3e50;
+    --color-light-gray: #f5f7fa;
+    --color-text: #333333;
+    --color-border: #ecf0f1;
     
     /* Cores de Destaque */
     --color-primary: #2ecc71;      /* Verde sustentável */
@@ -559,7 +564,7 @@ body {
 /* ==================== O QUE PODE SER DESCARTADO ==================== */
 .what-to-discard {
     padding: var(--spacing-2xl) 0;
-    background-color: var(--color-light-gray);
+    background-color: var(--bg-secondary);
 }
 
 .items-grid {
@@ -569,7 +574,7 @@ body {
 }
 
 .item-card {
-    background-color: var(--color-white);
+    background-color: var(--bg-card);
     border-radius: 12px;
     padding: var(--spacing-lg);
     text-align: center;
@@ -612,7 +617,7 @@ body {
 /* ==================== POR QUE DESCARTAR CORRETAMENTE ==================== */
 .why-recycle {
     padding: var(--spacing-2xl) 0;
-    background-color: var(--color-white);
+    background-color: var(--bg-primary);
 }
 
 .reasons-grid {
@@ -622,7 +627,7 @@ body {
 }
 
 .reason-card {
-    background: linear-gradient(135deg, var(--color-light-gray), var(--color-white));
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
     border-radius: 12px;
     padding: var(--spacing-lg);
     border-left: 4px solid var(--color-primary);
