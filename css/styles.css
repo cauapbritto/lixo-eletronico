@@ -610,7 +610,7 @@ body {
 }
 
 .item-card p {
-    color: #666;
+    color: var(--text-secondary);
     font-size: var(--font-size-sm);
 }
 
@@ -661,9 +661,7 @@ body {
 }
 
 .reason-card p {
-    color: #666;
-    font-size: var(--font-size-sm);
-    line-height: 1.8;
+    color: var(--text-secondary);  /* Usa variável que muda com o tema */
 }
 
 /* ==================== FOOTER ==================== */
