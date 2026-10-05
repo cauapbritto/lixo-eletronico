@@ -1,89 +1,48 @@
+# EcoPontos
 
-EcoPontos ♻️
+Site com os pontos de coleta de lixo eletrônico em Cuiabá (MT): endereço, horário, telefone e link para o mapa de cada local, além de uma lista do que pode ser descartado.
 
+## Funcionalidades
 
-O EcoPontos é um sistema e framework de interface voltado para a gestão e localização de pontos de coleta de lixo eletrônico
-. O projeto oferece uma plataforma interativa para que cidadãos encontrem locais adequados para o descarte de materiais, promovendo a sustentabilidade através de uma interface moderna e acessível
-.
+- Busca por nome ou bairro e filtro por tipo de local (ecoponto público, comércio, cooperativa, empresa recicladora)
+- Link direto para o Google Maps de cada ponto
+- Modo claro e escuro, com a escolha salva no navegador
+- Layout responsivo e navegável por teclado
 
+## Como rodar
 
-🚀 Funcionalidades Principais
-Gerenciamento de Temas (Light/Dark Mode): Possui um sistema de troca de temas que respeita a preferência do sistema do usuário ou permite a alternância manual, salvando a escolha no localStorage
-.
+O site é estático, sem etapa de build. Basta abrir o `index.html` no navegador ou servir a pasta:
 
+```bash
+python3 -m http.server 8000
+```
 
-Busca e Filtragem Dinâmica: Permite pesquisar pontos de coleta por nome e filtrar resultados por categorias como "pública", "loja", "cooperativa" ou "empresa"
-.
+e acessar `http://localhost:8000`.
 
+## Estrutura
 
-Interface Responsiva: O layout é otimizado para diferentes dispositivos, ajustando tamanhos de fonte e espaçamentos para telas menores
-.
+```
+index.html        página principal
+css/styles.css    estilos
+js/script.js      dados dos pontos de coleta, busca e filtro
+js/theme.js       alternância de tema
+img/              imagens
+```
 
+## Adicionar ou editar um ponto de coleta
 
-Acessibilidade Avançada: Inclui suporte para leitores de tela (sr-only), opções para redução de movimento e suporte a alto contraste
-.
+Os pontos ficam no array `collectionPoints`, no início de `js/script.js`. Cada item segue o formato:
 
-
-Interatividade e Animações: Utiliza animações de entrada (fadeIn), efeitos de hover em cartões e rolagem suave (scroll-behavior: smooth)
-.
-
-
-Recursos de Compartilhamento: Integração com a Web Share API para compartilhar locais e funcionalidade de impressão para informações de pontos específicos
-.
-
-
-🛠️ Tecnologias Utilizadas
-CSS3 (Modern UI): Uso de variáveis nativas para temas, animações @keyframes, e layouts baseados em CSS Grid e Flexbox
-.
-
-
-Vanilla JavaScript: Lógica de manipulação do DOM, gerenciamento de eventos de busca, e uso do IntersectionObserver para revelação de conteúdo durante o scroll
-.
-
-
-📍 Pontos de Coleta Cadastrados
-O sistema conta com uma base de dados inicial que inclui diversos locais, como:
-Ecopontos Públicos: Ex: Ecoponto ReciclaMT e CPA 3
-.
-
-
-Centros Comerciais: Pantanal Shopping, Shopping Popular e Shopping Estação
-.
-
-
-Grandes Redes: Supermercado Modelo, Atacadão e Assaí
-.
-
-
-Cooperativas e Associações: ACAMARCA, COOREPAM, AMAS-MT, entre outras
-.
-
-
-📂 Estrutura do Projeto
-O código está organizado em seções modulares para facilitar a manutenção:
-Variáveis e Reset: Definição da paleta de cores e configurações globais
-.
-
-
-Componentes de UI: Estilização de headers, botões (CTA), cartões de pontos de coleta e rodapés
-.
-
-
-Lógica de Negócio: Funções de renderização, filtragem e persistência de dados de busca
-.
-
-
-⚙️ Como Utilizar
-
-Ao carregar a página, o sistema inicializa os pontos de coleta pré-configurados
-.
-
-
-O usuário pode utilizar a barra de busca ou o seletor de categorias para encontrar o local mais próximo
-.
-As preferências de filtro e o último termo pesquisado são salvos automaticamente para a próxima visita
-.
-
---------------------------------------------------------------------------------
-Este framework foi desenvolvido para ser uma solução robusta na conscientização sobre o descarte correto de resíduos eletrônicos
-.
+```js
+{
+    id: 18,
+    name: "Nome do local",
+    address: "Rua, número – Bairro",
+    phone: "(65) 99999-9999",   // deixe "" se não houver
+    hours: "Seg a sex, 8h às 18h",
+    type: "cooperativa",        // publica | loja | cooperativa | empresa
+    lat: -15.60,
+    lng: -56.09,
+    mapsLink: "https://www.google.com/maps/..." // opcional
+}
+```

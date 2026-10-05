@@ -1,67 +1,42 @@
-// Sistema de Tema Claro/Escuro - EcoPontos
-console.log('🎨 Theme Script Carregado');
+// Tema claro/escuro. O tema salvo já é aplicado no <head> para evitar o "piscar" de cores.
+(function () {
+    const root = document.documentElement;
 
-// Função para aplicar o tema
-function applyTheme(themeName) {
-    console.log('✓ Aplicando tema:', themeName);
-    
-    if (themeName === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        const icon = document.querySelector('.theme-icon');
-        if (icon) icon.textContent = '🌙';
-    } else {
-        document.documentElement.removeAttribute('data-theme');
-        const icon = document.querySelector('.theme-icon');
-        if (icon) icon.textContent = '☀️';
+    function currentTheme() {
+        return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
     }
-    
-    localStorage.setItem('theme', themeName);
-}
 
-// Função para alternar tema
-function toggleTheme() {
-    console.log('🔄 Botão clicado!');
-    const current = document.documentElement.getAttribute('data-theme');
-    console.log('Tema atual:', current || 'light');
-    
-    const newTheme = current === 'dark' ? 'light' : 'dark';
-    console.log('Novo tema:', newTheme);
-    
-    applyTheme(newTheme);
-}
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+        } else {
+            root.removeAttribute('data-theme');
+        }
 
-// Exponha globalmente
-window.toggleTheme = toggleTheme;
-window.applyTheme = applyTheme;
+        const button = document.getElementById('themeToggle');
+        if (button) {
+            button.setAttribute('aria-label', theme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro');
+        }
 
-// Função de inicialização
-function initTheme() {
-    console.log('📍 Inicializando sistema de temas...');
-    
-    // Obter tema salvo
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    console.log('Tema salvo:', savedTheme);
-    
-    // Aplicar tema
-    applyTheme(savedTheme);
-    
-    // Registrar evento no botão
-    const btn = document.getElementById('themeToggle');
-    if (btn) {
-        console.log('✓ Botão encontrado, registrando evento');
-        btn.addEventListener('click', function(e) {
-            console.log('Click event disparado');
-            e.preventDefault();
-            toggleTheme();
-        });
-    } else {
-        console.error('❌ Botão #themeToggle não encontrado');
+        try {
+            localStorage.setItem('theme', theme);
+        } catch (e) {}
     }
-}
 
-// Inicializar
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTheme);
-} else {
-    initTheme();
-}
+    function init() {
+        applyTheme(currentTheme());
+
+        const button = document.getElementById('themeToggle');
+        if (button) {
+            button.addEventListener('click', () => {
+                applyTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+            });
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
