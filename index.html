@@ -3,208 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EcoPontos - Descarte seu lixo eletrônico corretamente em Cuiabá">
-    <title>EcoPontos - Coleta de Lixo Eletrônico</title>
-    <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- Favicon -->
+    <meta name="description" content="Lista de pontos de coleta de lixo eletrônico em Cuiabá: endereços, horários e o que cada local recebe.">
+    <meta name="theme-color" content="#1d4d33">
+    <title>EcoPontos · Descarte de lixo eletrônico em Cuiabá</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script>
+        // Aplica o tema salvo antes da renderização para evitar o "piscar" de cores.
+        try {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        } catch (e) {}
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.classList.add('motion');
+        }
+    </script>
 </head>
 <body>
-    <!-- ==================== HEADER ==================== -->
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
+    <!-- Ícones reutilizados na página -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+        <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="11" rx="1"/><path d="M2 19h20"/></symbol>
+        <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/></symbol>
+        <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0V7zM12 17v5"/></symbol>
+        <symbol id="i-battery" viewBox="0 0 24 24"><rect x="2" y="7" width="17" height="10" rx="1"/><path d="M22 11v2M6 10v4M10 10v4"/></symbol>
+        <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><rect x="3" y="14" width="4" height="7" rx="1"/><rect x="17" y="14" width="4" height="7" rx="1"/></symbol>
+        <symbol id="i-watch" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 6l1-4h4l1 4M9 18l1 4h4l1-4M12 9.5V12l1.5 1.5"/></symbol>
+        <symbol id="i-printer" viewBox="0 0 24 24"><path d="M6 9V2h12v7"/><rect x="2" y="9" width="20" height="9" rx="1"/><path d="M6 14h12v8H6z"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+        <symbol id="i-call" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+    </svg>
+
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <span class="logo-icon">♻️</span>
-                    <h1>EcoPontos</h1>
-                </div>
-                <nav class="nav">
-                    <ul class="nav-menu">
-                        <li><a href="#inicio" class="nav-link">Início</a></li>
-                        <li><a href="#pontos" class="nav-link">Pontos de Coleta</a></li>
-                        <li><a href="#sobre" class="nav-link">Sobre</a></li>
-                    </ul>
-                </nav>
-                <button class="theme-toggle" id="themeToggle" 
-                    aria-label="Alternar modo escuro/claro" 
-                    title="Alternar tema">
-                    <span class="theme-icon">☀️</span>
+        <div class="container header-content">
+            <a href="#inicio" class="logo" aria-label="EcoPontos, voltar ao início">
+                <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+                    <rect width="32" height="32" rx="7"/>
+                    <path d="M10 22V10h12M10 16h9M10 22h12"/>
+                </svg>
+                <span class="logo-text">EcoPontos</span>
+            </a>
+
+            <nav class="nav" aria-label="Navegação principal">
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#pontos" class="nav-link">Pontos de coleta</a></li>
+                    <li><a href="#o-que-descartar" class="nav-link">O que descartar</a></li>
+                    <li><a href="#por-que" class="nav-link">Por que descartar</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-button theme-toggle" id="themeToggle" type="button" aria-label="Ativar modo escuro">
+                    <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+                    <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
                 </button>
-                <button class="menu-toggle" id="menuToggle" 
-                    aria-label="Menu de navegação" 
+                <button class="icon-button menu-toggle" id="menuToggle" type="button"
+                    aria-label="Abrir menu"
                     aria-expanded="false"
                     aria-controls="nav-menu">
                     <span></span>
                     <span></span>
-                    <span></span>
                 </button>
             </div>
         </div>
+        <div class="scroll-progress" aria-hidden="true"></div>
     </header>
 
-    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
-    <main>
+    <main id="conteudo">
 
-    <!-- ==================== HERO SECTION ==================== -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h2 class="hero-title">Descarte seu Lixo Eletrônico Corretamente</h2>
-            <p class="hero-subtitle">Encontre os pontos de coleta mais próximos de você em Cuiabá e ajude a preservar o meio ambiente</p>
-            <button class="cta-button" id="ctaButton">Encontrar Pontos de Coleta</button>
-        </div>
-        <div class="hero-background"></div>
-    </section>
+        <section id="inicio" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <p class="eyebrow">Cuiabá · Mato Grosso</p>
+                    <h1 class="hero-title">Onde descartar lixo eletrônico em Cuiabá</h1>
+                    <p class="hero-subtitle">
+                        Celular quebrado, notebook antigo, pilhas e cabos não devem ir para o lixo comum.
+                        Reunimos os locais da cidade que recebem esse material, com endereço e horário de cada um.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#pontos" class="button button-primary">Ver pontos de coleta</a>
+                        <a href="#o-que-descartar" class="button button-ghost">O que pode ser entregue</a>
+                    </div>
+                </div>
 
-    <!-- ==================== POR QUE DESCARTAR CORRETAMENTE ==================== -->
-    <section class="why-recycle">
-        <div class="container">
-            <h2 class="section-title">Por Que Descartar Corretamente?</h2>
-            <div class="reasons-grid">
-                <div class="reason-card">
-                    <div class="reason-number">1</div>
-                    <h3>Proteção do Meio Ambiente</h3>
-                    <p>O lixo eletrônico contém metais pesados que contaminam o solo e a água. O descarte correto evita danos irreversíveis aos ecossistemas.</p>
+                <dl class="hero-facts" aria-label="Resumo" data-reveal>
+                    <div>
+                        <dt>Locais listados</dt>
+                        <dd id="statPoints">10</dd>
+                    </div>
+                    <div>
+                        <dt>Custo para descartar</dt>
+                        <dd>Gratuito</dd>
+                    </div>
+                    <div>
+                        <dt>Tipos de local</dt>
+                        <dd>Ecopontos, shoppings, mercados, cooperativas e recicladoras</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <section id="pontos" class="section collection-points" aria-labelledby="pontos-titulo">
+            <div class="container">
+                <header class="section-header" data-reveal>
+                    <p class="eyebrow">Pontos de coleta</p>
+                    <h2 id="pontos-titulo" class="section-title">Encontre um local perto de você</h2>
+                    <p class="section-lead">Horários podem mudar. Se possível, confirme com o local antes de sair de casa.</p>
+                </header>
+
+                <div class="search-filter" role="search">
+                    <div class="search-field">
+                        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+                        <label for="searchInput" class="sr-only">Buscar por nome ou endereço</label>
+                        <input
+                            type="search"
+                            id="searchInput"
+                            class="search-input"
+                            placeholder="Buscar por nome ou bairro"
+                            autocomplete="off"
+                        >
+                        <kbd class="search-kbd" aria-hidden="true">/</kbd>
+                    </div>
+                    <div>
+                        <label for="filterSelect" class="sr-only">Filtrar por tipo de local</label>
+                        <select id="filterSelect" class="filter-select">
+                            <option value="">Todos os tipos</option>
+                            <option value="publica">Ecoponto público</option>
+                            <option value="loja">Comércio</option>
+                            <option value="cooperativa">Cooperativa</option>
+                            <option value="empresa">Empresa recicladora</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="reason-card">
-                    <div class="reason-number">2</div>
-                    <h3>Recuperação de Materiais</h3>
-                    <p>O ouro, cobre, alumínio e outros materiais valiosos podem ser recuperados e reutilizados, reduzindo a necessidade de mineração.</p>
-                </div>
-                <div class="reason-card">
-                    <div class="reason-number">3</div>
-                    <h3>Saúde Pública</h3>
-                    <p>Trabalhadores em lixões sofrem com exposição a substâncias tóxicas. O descarte correto protege a saúde de comunidades inteiras.</p>
-                </div>
-                <div class="reason-card">
-                    <div class="reason-number">4</div>
-                    <h3>Economia Circular</h3>
-                    <p>Recuperar e reciclar materiais cria empregos, reduz custos de produção e promove um ciclo econômico mais sustentável.</p>
+
+                <p class="results-count" id="resultsCount" aria-live="polite"></p>
+
+                <div class="points-grid" id="pointsGrid"></div>
+
+                <div id="noResults" class="no-results" hidden>
+                    <p>Nenhum local encontrado para essa busca.</p>
+                    <button type="button" class="button button-ghost" id="clearFilters">Limpar filtros</button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ==================== O QUE PODE SER DESCARTADO ==================== -->
-    <section id="sobre" class="what-to-discard">
-        <div class="container">
-            <h2 class="section-title">O Que Pode Ser Descartado?</h2>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-icon">📱</div>
-                    <h3>Celulares e Smartphones</h3>
-                    <p>Aparelhos móveis e baterias de lítio</p>
-                </div>
-                <div class="item-card">
-                    <div class="item-icon">💻</div>
-                    <h3>Computadores e Laptops</h3>
-                    <p>Desktop, notebooks e periféricos</p>
-                </div>
-                <div class="item-card">
-                    <div class="item-icon">🖥️</div>
-                    <h3>Monitores e TVs</h3>
-                    <p>Telas de LCD, LED e CRT</p>
-                </div>
-                <div class="item-card">
-                    <div class="item-icon">🔌</div>
-                    <h3>Cabos e Adaptadores</h3>
-                    <p>Cabos USB, HDMI, carregadores</p>
-                </div>
-                <div class="item-card">
-                    <div class="item-icon">🔋</div>
-                    <h3>Baterias e Pilhas</h3>
-                    <p>Baterias recarregáveis e pilhas alcalinas</p>
-                </div>
-                <div class="item-card">
-                    <div class="item-icon">🎧</div>
-                    <h3>Fones e Acessórios</h3>
-                    <p>Fones de ouvido, alto-falantes, webcams</p>
-                </div>
-                <div class="item-card">
-                    <div class="item-icon">⌚</div>
-                    <h3>Dispositivos Wireless</h3>
-                    <p>Smartwatches, pulseiras inteligentes</p>
-                </div>
-                <div class="item-card">
-                    <div class="item-icon">🖨️</div>
-                    <h3>Impressoras e Scanners</h3>
-                    <p>Equipamentos de escritório eletrônicos</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <section id="o-que-descartar" class="section what-to-discard" aria-labelledby="descartar-titulo">
+            <div class="container">
+                <header class="section-header" data-reveal>
+                    <p class="eyebrow">O que descartar</p>
+                    <h2 id="descartar-titulo" class="section-title">O que pode ser entregue</h2>
+                    <p class="section-lead">Qualquer equipamento que funcione com bateria, pilha ou tomada. Alguns exemplos:</p>
+                </header>
 
-    <!-- ==================== SEÇÃO DE PONTOS DE COLETA ==================== -->
-    <section id="pontos" class="collection-points">
-        <div class="container">
-            <h2 class="section-title">Pontos de Coleta em Cuiabá</h2>
-            
-            <!-- Busca e Filtro -->
-            <div class="search-filter">
-                <div>
-                    <label for="searchInput" class="sr-only">Buscar ponto de coleta</label>
-                    <input 
-                        type="text" 
-                        id="searchInput" 
-                        class="search-input" 
-                        placeholder="Buscar por nome do local ou endereço..."
-                        aria-label="Buscar ponto de coleta"
-                    >
-                </div>
-                <div>
-                    <label for="filterSelect" class="sr-only">Filtrar por tipo</label>
-                    <select id="filterSelect" class="filter-select" aria-label="Filtrar por tipo de estabelecimento">
-                        <option value="">Filtrar por tipo...</option>
-                    <option value="loja">Loja de Eletrônicos</option>
-                    <option value="cooperativa">Cooperativa Ambiental</option>
-                    <option value="empresa">Empresa Recicladora</option>
-                    <option value="publica">Instituição Pública</option>
-                    </select>
-                </div>
-            </div>
+                <ul class="items-grid">
+                    <li class="item" data-reveal>
+                        <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+                        <div>
+                            <h3>Celulares e tablets</h3>
+                            <p>Aparelhos e baterias de lítio</p>
+                        </div>
+                    </li>
+                    <li class="item" data-reveal>
+                        <svg class="icon" aria-hidden="true"><use href="#i-laptop"/></svg>
+                        <div>
+                            <h3>Computadores</h3>
+                            <p>Notebooks, desktops, teclados e mouses</p>
+                        </div>
+                    </li>
+                    <li class="item" data-reveal>
+                        <svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg>
+                        <div>
+                            <h3>Monitores e TVs</h3>
+                            <p>Telas LCD, LED e de tubo (CRT)</p>
+                        </div>
+                    </li>
+                    <li class="item" data-reveal>
+                        <svg class="icon" aria-hidden="true"><use href="#i-plug"/></svg>
+                        <div>
+                            <h3>Cabos e carregadores</h3>
+                            <p>USB, HDMI, fontes e adaptadores</p>
+                        </div>
+                    </li>
+                    <li class="item" data-reveal>
+                        <svg class="icon" aria-hidden="true"><use href="#i-battery"/></svg>
+                        <div>
+                            <h3>Pilhas e baterias</h3>
+                            <p>Alcalinas e recarregáveis</p>
+                        </div>
+                    </li>
+                    <li class="item" data-reveal>
+                        <svg class="icon" aria-hidden="true"><use href="#i-headphones"/></svg>
+                        <div>
+                            <h3>Áudio e acessórios</h3>
+                            <p>Fones, caixas de som e webcams</p>
+                        </div>
+                    </li>
+                    <li class="item" data-reveal>
+                        <svg class="icon" aria-hidden="true"><use href="#i-watch"/></svg>
+                        <div>
+                            <h3>Relógios e pulseiras</h3>
+                            <p>Smartwatches e similares</p>
+                        </div>
+                    </li>
+                    <li class="item" data-reveal>
+                        <svg class="icon" aria-hidden="true"><use href="#i-printer"/></svg>
+                        <div>
+                            <h3>Impressoras e scanners</h3>
+                            <p>Equipamentos de escritório</p>
+                        </div>
+                    </li>
+                </ul>
 
-            <!-- Grade de Pontos -->
-            <div class="points-grid" id="pointsGrid">
-                <!-- Preenchido via JavaScript -->
+                <aside class="note" data-reveal>
+                    <h3>Antes de entregar</h3>
+                    <p>Faça backup e restaure o aparelho para as configurações de fábrica. Retire o chip e o cartão de memória.</p>
+                </aside>
             </div>
+        </section>
 
-            <div id="noResults" class="no-results" style="display: none;">
-                <p>Nenhum ponto encontrado com os filtros selecionados.</p>
+        <section id="por-que" class="section why-recycle" aria-labelledby="porque-titulo">
+            <div class="container why-grid">
+                <header class="section-header" data-reveal>
+                    <p class="eyebrow">Por que descartar</p>
+                    <h2 id="porque-titulo" class="section-title">O lixo comum não é o lugar certo</h2>
+                </header>
+
+                <ol class="reasons">
+                    <li data-reveal>
+                        <h3>Contaminação do solo e da água</h3>
+                        <p>Placas e baterias contêm chumbo, mercúrio e cádmio. Em aterros comuns, esses metais vazam para o solo e chegam aos lençóis freáticos.</p>
+                    </li>
+                    <li data-reveal>
+                        <h3>Materiais que voltam a ser usados</h3>
+                        <p>Cobre, alumínio, ouro e plástico podem ser recuperados e reaproveitados pela indústria, reduzindo a extração de matéria-prima.</p>
+                    </li>
+                    <li data-reveal>
+                        <h3>Saúde de quem trabalha com resíduos</h3>
+                        <p>Quando o material chega separado, catadores e cooperativas não precisam desmontar equipamentos sem proteção.</p>
+                    </li>
+                    <li data-reveal>
+                        <h3>Trabalho e renda locais</h3>
+                        <p>Parte do que é coletado sustenta cooperativas e recicladoras da própria cidade.</p>
+                    </li>
+                </ol>
             </div>
-        </div>
-    </section>
+        </section>
 
     </main>
 
-    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section footer-logo">
-                    <div class="logo-container">
-                        <img src="img/fasipz-cpa.png" alt="FASIPZ CPA" class="footer-brand-logo">
-                        <p>Promovendo a coleta responsável de lixo eletrônico em Cuiabá.</p>
-                    </div>
-                </div>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="logo-text">EcoPontos</span>
+                <p>Pontos de coleta de lixo eletrônico em Cuiabá, reunidos em um só lugar.</p>
             </div>
+            <div class="footer-partner">
+                <img src="img/fasipz-cpa.png" alt="Faculdade Fasipe CPA" class="footer-partner-logo">
+            </div>
+        </div>
+        <div class="container">
             <div class="footer-bottom">
-                <p>&copy; Desenvolvido para a cominidade.</p>
+                <p>&copy; <span id="year">2026</span> EcoPontos</p>
+                <p>Endereços e horários podem mudar. Confirme com o local antes de ir.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="js/theme.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/effects.js"></script>
 </body>
 </html>
-
-<!-- 
-    ╔═══════════════════════════════════════════════════════════════╗
-    ║  REVISÃO DE CÓDIGO REALIZADA EM: 9 de Abril de 2026         ║
-    ║  Versão: 1.0.1 (com melhorias de acessibilidade)            ║
-    ║  Score de Qualidade: 8.4/10                                   ║
-    ║  Pontos de Melhoria: Acessibilidade, Labels, ARIA            ║
-    ╚═══════════════════════════════════════════════════════════════╝
--->
