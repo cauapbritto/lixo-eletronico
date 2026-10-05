@@ -23,6 +23,9 @@
                 document.documentElement.setAttribute('data-theme', 'dark');
             }
         } catch (e) {}
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.classList.add('motion');
+        }
     </script>
 </head>
 <body>
@@ -79,6 +82,7 @@
                 </button>
             </div>
         </div>
+        <div class="scroll-progress" aria-hidden="true"></div>
     </header>
 
     <main id="conteudo">
@@ -98,7 +102,7 @@
                     </div>
                 </div>
 
-                <dl class="hero-facts" aria-label="Resumo">
+                <dl class="hero-facts" aria-label="Resumo" data-reveal>
                     <div>
                         <dt>Locais listados</dt>
                         <dd id="statPoints">10</dd>
@@ -117,7 +121,7 @@
 
         <section id="pontos" class="section collection-points" aria-labelledby="pontos-titulo">
             <div class="container">
-                <header class="section-header">
+                <header class="section-header" data-reveal>
                     <p class="eyebrow">Pontos de coleta</p>
                     <h2 id="pontos-titulo" class="section-title">Encontre um local perto de você</h2>
                     <p class="section-lead">Horários podem mudar. Se possível, confirme com o local antes de sair de casa.</p>
@@ -134,6 +138,7 @@
                             placeholder="Buscar por nome ou bairro"
                             autocomplete="off"
                         >
+                        <kbd class="search-kbd" aria-hidden="true">/</kbd>
                     </div>
                     <div>
                         <label for="filterSelect" class="sr-only">Filtrar por tipo de local</label>
@@ -160,63 +165,63 @@
 
         <section id="o-que-descartar" class="section what-to-discard" aria-labelledby="descartar-titulo">
             <div class="container">
-                <header class="section-header">
+                <header class="section-header" data-reveal>
                     <p class="eyebrow">O que descartar</p>
                     <h2 id="descartar-titulo" class="section-title">O que pode ser entregue</h2>
                     <p class="section-lead">Qualquer equipamento que funcione com bateria, pilha ou tomada. Alguns exemplos:</p>
                 </header>
 
                 <ul class="items-grid">
-                    <li class="item">
+                    <li class="item" data-reveal>
                         <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
                         <div>
                             <h3>Celulares e tablets</h3>
                             <p>Aparelhos e baterias de lítio</p>
                         </div>
                     </li>
-                    <li class="item">
+                    <li class="item" data-reveal>
                         <svg class="icon" aria-hidden="true"><use href="#i-laptop"/></svg>
                         <div>
                             <h3>Computadores</h3>
                             <p>Notebooks, desktops, teclados e mouses</p>
                         </div>
                     </li>
-                    <li class="item">
+                    <li class="item" data-reveal>
                         <svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg>
                         <div>
                             <h3>Monitores e TVs</h3>
                             <p>Telas LCD, LED e de tubo (CRT)</p>
                         </div>
                     </li>
-                    <li class="item">
+                    <li class="item" data-reveal>
                         <svg class="icon" aria-hidden="true"><use href="#i-plug"/></svg>
                         <div>
                             <h3>Cabos e carregadores</h3>
                             <p>USB, HDMI, fontes e adaptadores</p>
                         </div>
                     </li>
-                    <li class="item">
+                    <li class="item" data-reveal>
                         <svg class="icon" aria-hidden="true"><use href="#i-battery"/></svg>
                         <div>
                             <h3>Pilhas e baterias</h3>
                             <p>Alcalinas e recarregáveis</p>
                         </div>
                     </li>
-                    <li class="item">
+                    <li class="item" data-reveal>
                         <svg class="icon" aria-hidden="true"><use href="#i-headphones"/></svg>
                         <div>
                             <h3>Áudio e acessórios</h3>
                             <p>Fones, caixas de som e webcams</p>
                         </div>
                     </li>
-                    <li class="item">
+                    <li class="item" data-reveal>
                         <svg class="icon" aria-hidden="true"><use href="#i-watch"/></svg>
                         <div>
                             <h3>Relógios e pulseiras</h3>
                             <p>Smartwatches e similares</p>
                         </div>
                     </li>
-                    <li class="item">
+                    <li class="item" data-reveal>
                         <svg class="icon" aria-hidden="true"><use href="#i-printer"/></svg>
                         <div>
                             <h3>Impressoras e scanners</h3>
@@ -225,7 +230,7 @@
                     </li>
                 </ul>
 
-                <aside class="note">
+                <aside class="note" data-reveal>
                     <h3>Antes de entregar</h3>
                     <p>Faça backup e restaure o aparelho para as configurações de fábrica. Retire o chip e o cartão de memória.</p>
                 </aside>
@@ -234,25 +239,25 @@
 
         <section id="por-que" class="section why-recycle" aria-labelledby="porque-titulo">
             <div class="container why-grid">
-                <header class="section-header">
+                <header class="section-header" data-reveal>
                     <p class="eyebrow">Por que descartar</p>
                     <h2 id="porque-titulo" class="section-title">O lixo comum não é o lugar certo</h2>
                 </header>
 
                 <ol class="reasons">
-                    <li>
+                    <li data-reveal>
                         <h3>Contaminação do solo e da água</h3>
                         <p>Placas e baterias contêm chumbo, mercúrio e cádmio. Em aterros comuns, esses metais vazam para o solo e chegam aos lençóis freáticos.</p>
                     </li>
-                    <li>
+                    <li data-reveal>
                         <h3>Materiais que voltam a ser usados</h3>
                         <p>Cobre, alumínio, ouro e plástico podem ser recuperados e reaproveitados pela indústria, reduzindo a extração de matéria-prima.</p>
                     </li>
-                    <li>
+                    <li data-reveal>
                         <h3>Saúde de quem trabalha com resíduos</h3>
                         <p>Quando o material chega separado, catadores e cooperativas não precisam desmontar equipamentos sem proteção.</p>
                     </li>
-                    <li>
+                    <li data-reveal>
                         <h3>Trabalho e renda locais</h3>
                         <p>Parte do que é coletado sustenta cooperativas e recicladoras da própria cidade.</p>
                     </li>
@@ -282,5 +287,6 @@
 
     <script src="js/theme.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/effects.js"></script>
 </body>
 </html>

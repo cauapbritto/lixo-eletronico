@@ -166,9 +166,10 @@ function renderPoints(points) {
         ? '1 local encontrado'
         : `${points.length} locais encontrados`;
 
-    points.forEach(point => {
+    points.forEach((point, index) => {
         const card = document.createElement('article');
         card.className = 'point-card';
+        card.style.setProperty('--i', Math.min(index, 8));
 
         const mapsUrl = point.mapsLink
             || `https://www.google.com/maps/search/?api=1&query=${point.lat},${point.lng}`;
